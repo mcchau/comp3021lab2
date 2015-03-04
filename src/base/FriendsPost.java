@@ -1,7 +1,7 @@
 package base;
 import java.util.Date;
 
-public class FriendsPost extends post {
+public class FriendsPost extends Post {
 	private User friend;
 	public FriendsPost(Date dates, String contents,User friends ){
 		 super(dates,contents);
