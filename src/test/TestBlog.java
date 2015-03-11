@@ -2,8 +2,10 @@ package test;
 
 import java.io.*;
 import java.util.Date;
+
 import base.*;
 //import Blog.*;
+import blog.Blog;
 
 public class TestBlog {
 	

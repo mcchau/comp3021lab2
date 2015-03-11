@@ -2,7 +2,7 @@ package base;
 
 import java.util.Date;
 
-public class Post {
+public class Post implements Comparable<Post>{
 	
 	private Date date;
 	private String content;
@@ -97,6 +97,14 @@ public boolean equals(Object obj) {
 	   return ans;
 	   
    }
+
+@Override
+public int compareTo(Post p) {
+	
+	// TODO Auto-generated method stub
+	return this.getdate().compareTo(p.getdate());
+	
+}
    
 
 

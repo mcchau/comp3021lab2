@@ -1,9 +1,10 @@
-package base;
+package blog;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import base.*;
 
@@ -84,6 +85,23 @@ public class Blog {
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
+    
+    public void search(int month, String someone){
+    	Calendar cal = Calendar.getInstance();
+    	
+    	for (Post p : allPosts){
+    		cal.setTime(p.getdate());
+    		int postMonth = cal.get(Calendar.MONTH);
+    		
+    		if((postMonth+1 == month) && p.getContent().contains(someone)){
+    			System.out.println(p);
+    		}   		    		
+    	}
+    }
+    
+    public void setPosts( ArrayList<Post> allPost2){
+    	allPosts = allPost2;
+    }
 	
 
 }

@@ -2,7 +2,7 @@ package base;
 
 import java.util.Date;
 
-public class User {
+public class User implements Comparable<User>{
 		
 		private int userID;
 		private String userName;
@@ -54,6 +54,12 @@ public class User {
 			}
 
 	@Override
+	public String toString() {
+		return "User [userID=" + userID + ", userName=" + userName
+				+ ", userEmail=" + userEmail + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -87,6 +93,13 @@ public class User {
 		} else if (!userName.equals(other.userName))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public int compareTo(User u){
+		if(this.userID == u.userID) return 0;
+		else if (this.userID > u.userID) return 1;
+		else return -1;
 	}
 
 }
