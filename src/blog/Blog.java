@@ -3,15 +3,68 @@ package blog;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+
+
 
 import base.*;
 
-public class Blog {
+public class Blog implements Serializable{
 	
 	private User user;
 	private ArrayList<Post> allPosts;
+	
+	public void save(String filepath){	
+		try {
+
+		FileOutputStream out = new FileOutputStream(filepath);
+        ObjectOutputStream oout = new ObjectOutputStream(out);        
+
+		oout.writeObject(this);
+
+        oout.close();
+        
+		} catch (IOException e) {
+			e.printStackTrace();
+			}
+		
+	}
+	
+	public void load(String filepath){
+		FileInputStream In;
+		ObjectInputStream IIn;
+		
+		try{
+			In = new FileInputStream(filepath);
+			IIn = new ObjectInputStream(In);
+			Blog read = (Blog) IIn.readObject();
+			this.allPosts = read.allPosts;
+			this.user = read.user;
+			In.close();
+		}
+		catch(FileNotFoundException  e1) {
+			System.out.println("Wait! There is something wrong. I cannot find the file..");
+			}
+		catch(ClassNotFoundException  e2) {
+			e2.printStackTrace();
+			}
+		catch(IOException e3) {
+			e3.printStackTrace();
+			}
+		
+		
+		
+	}
+	
+	
 	
 	public Blog(User U){
 		user = U;
