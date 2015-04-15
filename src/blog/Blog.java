@@ -71,6 +71,10 @@ public class Blog implements Serializable{
 		allPosts = new ArrayList<Post>();
 	}
 	
+	public Blog(){
+		allPosts = new ArrayList<Post>();
+	}
+	
 	public void setUser(User U){
 		user = U;
 	}
@@ -78,6 +82,9 @@ public class Blog implements Serializable{
 	public User getUser(){
 		return user;
 	}
+	
+	public void add(Post p){
+	    allPosts.add(p);}
 	
 	public void post(Post p){
 	    allPosts.add(p);

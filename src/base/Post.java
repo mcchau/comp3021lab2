@@ -16,6 +16,7 @@ public class Post implements Comparable<Post>, Serializable{
 		
 	}
 	
+	
 	public String getContent(){
 		
 		return content;
